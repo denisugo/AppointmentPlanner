@@ -3,12 +3,23 @@ import { Switch, Route, NavLink } from "react-router-dom";
 import "./App.css";
 import AppointmentPage from "../appointmentPage/AppointmentPage";
 import ContactPage from "../contactPage/ContactPage";
+import { useState } from "react";
 
 function App() {
   // Constants
   const ROUTES = {
     CONTACTS: "/contacts",
     APPOINTMENTS: "/appointments",
+  };
+
+  const [contactList, setContactList] = useState([]);
+  const [appointmentList, setAppointmentList] = useState([]);
+
+  const handleAddNewContact = (data) => {
+    setContactList((prev) => [...prev, data]);
+  };
+  const handleAddNewAppointment = (data) => {
+    setAppointmentList((prev) => [...prev, data]);
   };
 
   return (
@@ -35,12 +46,17 @@ function App() {
       <main>
         <Switch>
           <Route path={ROUTES.CONTACTS}>
-            {/* Add props to ContactsPage */}
-            <ContactPage />
+            <ContactPage
+              addNew={handleAddNewContact}
+              contactList={contactList}
+            />
           </Route>
           <Route path={ROUTES.APPOINTMENTS}>
-            {/* Add props to AppointmentsPage */}
-            <AppointmentPage />
+            <AppointmentPage
+              contactList={contactList}
+              appointmentList={appointmentList}
+              addNew={handleAddNewAppointment}
+            />
           </Route>
         </Switch>
       </main>
