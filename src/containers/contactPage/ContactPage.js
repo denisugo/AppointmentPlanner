@@ -20,10 +20,16 @@ function ContactPage({ contactList, addNew }) {
   };
   const handleSubmit = (event) => {
     event.preventDefault();
-    addNew({ name: name, email: email, tel: tel });
-    setName("");
-    setTel("");
-    setEmail("");
+    const telRegEx = new RegExp("[1-9][0-9]{2}-[1-9][0-9]{2}-[0-9]{4}");
+    const emailRegEx = new RegExp("@");
+    if (name && email && tel) {
+      if (telRegEx.test(tel) && emailRegEx.test(email)) {
+        addNew({ name: name, email: email, tel: tel });
+        setName("");
+        setTel("");
+        setEmail("");
+      }
+    }
   };
 
   return (

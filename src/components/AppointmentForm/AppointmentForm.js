@@ -14,8 +14,9 @@ function AppointmentForm({
 }) {
   return (
     <div>
-      <form action="" onSubmit={handleSubmit}>
+      <form action="" onSubmit={handleSubmit} className="Appointment-form">
         <input
+          data-testid="title"
           type="text"
           name="title"
           placeholder="Title"
@@ -25,6 +26,7 @@ function AppointmentForm({
         />
 
         <input
+          data-testid="date"
           type="date"
           name="date"
           //placeholder="Date"
@@ -33,6 +35,7 @@ function AppointmentForm({
           required
         />
         <input
+          data-testid="time"
           type="time"
           name="time"
           //placeholder="Time"
@@ -40,9 +43,11 @@ function AppointmentForm({
           onChange={handleChangeTime}
           required
         />
+
         <ContactPicker
           onChange={handleChangeContact}
           contactList={contactList}
+          value={values.contact}
         />
         <input type="submit" value="Add new" />
       </form>

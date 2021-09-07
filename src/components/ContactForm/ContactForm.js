@@ -38,7 +38,7 @@ function ContactForm({
           onChange={handleChangeEmail}
           required
         />
-        <input type="submit" value="Add new" />
+        <input type="submit" value="Add new" data-testid="submit" />
       </form>
     </div>
   );

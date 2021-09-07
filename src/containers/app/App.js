@@ -1,8 +1,8 @@
 import { Switch, Route, NavLink } from "react-router-dom";
 
 import "./App.css";
-import AppointmentPage from "../appointmentPage/AppointmentPage";
-import ContactPage from "../contactPage/ContactPage";
+import AppointmentPage from "../AppointmentPage/AppointmentPage";
+import ContactPage from "../ContactPage/ContactPage";
 import { useState } from "react";
 
 function App() {
